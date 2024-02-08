@@ -238,8 +238,7 @@ if(close){
 
 </script>
 
-<main>
-<h1 class="text-3xl font-bold text-center pt-5">Parent Dashboard</h1>
+<main class="overflow-y-scroll h-[80vh]">
 <div>
     {#if loading}
     <div class="flex flex-col justify-center items-center">

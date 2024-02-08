@@ -71,7 +71,7 @@
         });
     }
 </script>
-
+<html lang="en">
 <ion-app>
     <nav class="navbar bg-green-300">
         <div class="flex-1">
@@ -108,3 +108,14 @@
     </nav>
    <slot></slot>
 </ion-app>
+</html>
+
+<style global>
+    :root {
+        background-color: #191e24;
+    }
+
+    html {
+        background-color: #191e24;
+    }
+</style>

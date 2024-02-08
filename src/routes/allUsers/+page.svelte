@@ -32,7 +32,7 @@
     }
 </script>
 
-<main>
+<main class="overflow-y-scroll">
     <h1 class="text-3xl font-bold text-center pt-5">Users</h1>
     <div class="flex flex-row justify-center items-center">
         <div class="pt-5">

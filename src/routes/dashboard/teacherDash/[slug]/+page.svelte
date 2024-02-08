@@ -64,7 +64,7 @@
     }
 </script>
 
-<main>
+<main class=" overflow-y-scroll h-[80vh]">
     {#if loading}
         <div class="flex items-center justify-center pt-1">
         <span class="loading loading-spinner loading-lg mt-5"></span>

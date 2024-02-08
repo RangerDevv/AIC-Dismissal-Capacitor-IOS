@@ -77,7 +77,7 @@
 <main>
     <h1 class="text-3xl font-bold text-center pt-5">Classes</h1>
     <div class="flex flex-col items-center justify-center">
-        <div class="flex flex-col gap-3 w-full">
+        <div class="flex flex-col gap-3 w-full overflow-y-scroll h-[80vh]">
             {#if classList.length === 0}
             <div class="flex flex-col justify-start items-center pt-10">
                 <span class="loading loading-spinner loading-lg"></span>
@@ -105,7 +105,7 @@
                     {:else}
                     <a href="/dashboard/teacherDash/{allClass.$id}/"><button class="btn btn-primary">View</button></a>
                     {/if}
-                    </div>
+                </div>
                 {/each}
             {/if}
         </div>

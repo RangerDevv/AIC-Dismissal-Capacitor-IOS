@@ -106,13 +106,16 @@
             {/if}
         </div>
     </nav>
+    <div class="mainBody">
    <slot></slot>
+    </div>
 </ion-app>
 </html>
 
 <style global>
     :root {
         background-color: #191e24;
+        color: white !important;
     }
 
     html {

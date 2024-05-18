@@ -120,5 +120,6 @@
 
     html {
         background-color: #191e24;
+        color: white !important;
     }
 </style>

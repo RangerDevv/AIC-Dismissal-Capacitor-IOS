@@ -22,8 +22,8 @@
 </script>
 
     <h1 class="text-xl text-center pt-5 text-white font-bold">Login</h1>
-    <form on:submit|preventDefault={loginUser} class="flex flex-col justify-center items-center">
-        <div class="w-80 mt-[10vh]">
+    <form on:submit|preventDefault={loginUser} class="flex flex-col items-center">
+        <div class="w-80">
             <label class="form-control w-full max-w-xs">
                 <div class="label">
                 <span class="label-text">Email</span>

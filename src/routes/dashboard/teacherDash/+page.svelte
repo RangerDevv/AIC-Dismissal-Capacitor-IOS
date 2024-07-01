@@ -74,7 +74,7 @@
     });
 </script>
 
-<main>
+<main class="text-white">
     <h1 class="text-3xl font-bold text-center pt-5">Classes</h1>
     <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col gap-3 w-full overflow-y-scroll h-[80vh]">

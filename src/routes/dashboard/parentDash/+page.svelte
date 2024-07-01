@@ -238,7 +238,7 @@ if(close){
 
 </script>
 
-<main class="overflow-y-scroll h-[80vh]">
+<main class="overflow-y-scroll h-[80vh] text-white">
 <div>
     {#if loading}
     <div class="flex flex-col justify-center items-center">

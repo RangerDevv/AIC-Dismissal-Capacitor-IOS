@@ -28,7 +28,7 @@
                 <div class="label">
                 <span class="label-text">Email</span>
                 </div>
-                <input type="email" placeholder="Type here" class="input input-bordered w-full max-w-xs" bind:value={email} />
+                <input type="email" placeholder="Type here" class="input input-bordered w-full max-w-xs text-black" bind:value={email} />
             </label>
             <!-- <label for="password">Password</label>
             <input type="password" id="password" bind:value={password} /> -->
@@ -36,7 +36,7 @@
                 <div class="label">
                     <span class="label-text">Password</span>
                 </div>
-                <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs" bind:value={password} />
+                <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs text-black" bind:value={password} />
                 <div class="label" on:click={forgotPassword}>
                     <span class="label-text">Forgot Password</span>
                 </div>

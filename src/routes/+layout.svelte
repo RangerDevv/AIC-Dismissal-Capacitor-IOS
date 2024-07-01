@@ -68,7 +68,7 @@
 <ion-app>
     <nav class="navbar bg-green-300">
         <div class="flex-1">
-            <a href="/"><img src="https://www.attawheed.org/uploads/1/1/0/6/110609037/logo-with-text-islamic-center-arabic_1.png" alt="logo" class="h-14 w-auto"/></a>
+            <a href="/" class="text-4xl btn">🏠</a>
         </div>
         {#if loading}
         <div class="flex-1">

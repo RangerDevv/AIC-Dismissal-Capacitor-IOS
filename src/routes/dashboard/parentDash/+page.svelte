@@ -333,7 +333,9 @@ if(close){
     {#each children as child}
     <div id="lebels" class="flex flex-row gap-2 mx-auto pb-2 justify-between pl-10 items-center">
         <p class="font-bold">Status</p>
+        {#if child.Sent}
         <p class="font-bold mr-4">Received</p>
+        {/if}
     </div>
         {#if child.Sent}
         <div class="flex flex-row gap-2 mx-auto pb-2 justify-start pl-10 items-center">

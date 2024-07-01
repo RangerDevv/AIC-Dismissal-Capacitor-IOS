@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<main>
+<main class="text-white">
     <h1>Privacy Policy</h1>
     <p>
         At our website, we collect user location to perform functions pertaining to how close a user is to the mosque.

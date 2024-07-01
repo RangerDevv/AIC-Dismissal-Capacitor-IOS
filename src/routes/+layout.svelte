@@ -91,7 +91,7 @@
                     Admin
                   </summary>
                   <ul class="p-2 rounded-t-none bg-slate-800">
-                    <li><a href="/allUsers">Users</a></li>
+                    <li><a href="/allUsers" class="text-white">Users</a></li>
                     <!-- <li><a>Logs</a></li> -->
                   </ul>
                 </details>

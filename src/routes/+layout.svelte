@@ -19,6 +19,7 @@
             // console.log(res);
             isLoggedIn = true;
             uid = res['$id'];
+            console.log(uid);
                 appwriteDatabases.listDocuments(DB_ID,COLLECTION.Parents,[Query.equal('uid',[res['$id']])]).then((res:any) => {
                     teacher = res['documents'][0]['isTeacher'];
                     isLoggedIn = true;
@@ -66,46 +67,35 @@
 </script>
 <html lang="en">
 <ion-app>
-    <nav class="navbar bg-green-300">
-        <div class="flex-1">
-            <a href="/" class="text-4xl btn">🏠</a>
-        </div>
-        {#if loading}
-        <div class="flex-1">
-            <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-12 w-12"></div>
-        </div>
-        {:else}
-        <div class="flex flex-row gap-3">
-            {#if !isLoggedIn}
-            <a href="/loginRegister/register"><button class="btn btn-primary">Register</button></a>
-            <a href="/loginRegister/login"><button class="btn">Login</button></a>
-            {/if}
-            {#if isLoggedIn}
-            {#if teacher}
-            <a href="/dashboard/teacherDash/"><button class="btn">All Classroom</button></a>
-            {#if uid == '659b001f1dd2ea90b3ed' || uid == '658c6e971bcb4f11e387'}
-            <ul class="menu menu-horizontal px-1">
-            <li>
-                <details>
-                  <summary class="hover:bg-slate-900 btn text-base">
-                    Admin
-                  </summary>
-                  <ul class="p-2 rounded-t-none bg-slate-800">
-                    <li><a href="/allUsers" class="text-white">Users</a></li>
-                    <!-- <li><a>Logs</a></li> -->
-                  </ul>
-                </details>
-            </li>
-            </ul>
-            {/if}
-            {/if}
-            <button class="btn btn-primary" on:click={logout}>Logout</button>
-            {/if}
-        </div>
-        {/if}
-    </nav>
+
     <div class="mainBody">
    <slot></slot>
+   <nav class="navbar bg-green-300 fixed bottom-0 ">
+    <div class="flex-1">
+        <a href="/" class="text-4xl btn">🏠</a>
+    </div>
+    {#if loading}
+    <div class="flex-1">
+        <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-12 w-12"></div>
+    </div>
+    {:else}
+    <div class="flex flex-row gap-3">
+        {#if !isLoggedIn}
+        <a href="/loginRegister/register"><button class="btn btn-primary">Register</button></a>
+        <a href="/loginRegister/login"><button class="btn">Login</button></a>
+        {/if}
+        {#if isLoggedIn}
+        {#if teacher}
+        <a href="/dashboard/teacherDash/"><button class="btn">All Classroom</button></a>
+        {#if uid == '6697ecbf5b1da3cc985e' || uid == '658c6e971bcb4f11e387'}
+        <a href="/allUsers"><button class="btn">Admin</button></a>
+        {/if}
+        {/if}
+        <button class="btn btn-primary" on:click={logout}>Logout</button>
+        {/if}
+    </div>
+    {/if}
+</nav>
     </div>
 </ion-app>
 </html>

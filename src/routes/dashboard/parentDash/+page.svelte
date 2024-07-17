@@ -192,11 +192,7 @@ if (navigator.userAgent.includes('MedianIOS')) {
 });
 
     async function isArrived(e:any) {
-        const close = document.getElementById('notify') as HTMLInputElement;
-if(close){
-        close.click();
-}
-        await appwriteDatabases.updateDocument(DB_ID,COLLECTION.Parents,parentDBID,
+        await appwriteDatabases.updateDocument(DB_ID,COLLECTION.Students,e.target.value,
             {
                 Arrived:e.target.checked
             }
@@ -239,6 +235,7 @@ if(close){
 </script>
 
 <main class="overflow-y-scroll h-[80vh] text-white">
+<h1 class="text-3xl font-bold text-center pt-5">Parent Dashboard</h1>
 <div>
     {#if loading}
     <div class="flex flex-col justify-center items-center">
@@ -276,42 +273,7 @@ if(close){
                     <h2 class="text-sm">Class: {child.class.Name}</h2>
                 </div>
                 <div class="flex flex-row gap-10 pr-4">
-                    <!-- {#if locationLoading}
-                    <span class="loading loading-spinner loading-lg mt-5"></span>
-                    {:else}
-                    {#if isLocationAccessGranted}
-                    {#if isNearMosque} -->
-                    <!-- <button class="btn btn-success">Arrived</button> -->
-                        <input type="checkbox" bind:checked={arrivedBool} id="{child.Name}" name="{child.Name}" value="{child.$id}"  class='checkbox checkbox-success checkbox-md rounded-full' on:change={isArrived}>
-                    <!-- {:else}
-                    <div class="flex flex-col just-end items-end">
-                    {#if arrivedBool}
-                    <label for="notify" class="btn btn-ghost outline outline-green-600 text-green-600 m-6" id="warning">Notified</label>
-                    {:else}
-                    <label for="notify" class="btn btn-ghost outline outline-rose-600 text-rose-600 m-2" id="warning">Notify Anyway</label>
-                    {/if}
-                    <p class="w-36 text-sm">Notify when close to the mosque.</p>
-                    </div>
-                    <input type="checkbox" id="notify" class="modal-toggle" />
-                    <div class="modal" role="dialog">
-                    <div class="modal-box">
-                        <h1 class="text-3xl font-bold text-center pt-5">Are you sure you want to notify the mosque?</h1>
-                        <div class="flex flex-col justify-center items-center">
-                            <label class="flex flex-col gap-2 cursor-pointer items-center">
-                            <span class="label-text mt-5 text-lg">Yes</span> 
-                            <input type="checkbox" bind:checked={arrivedBool} id="{child.Name}" name="{child.Name}" value="{child.$id}"  class='checkbox checkbox-success checkbox-lg rounded-full' on:change={isArrived}>
-                            </label>
-                        </div>
-                        <div class="modal-action">
-                            <label for="notify" class="btn btn-error">Close</label>
-                        </div>
-                    </div>
-                    </div>
-                    {/if}
-                    {:else}
-                    <label for="notify" class="btn btn-ghost outline outline-rose-600 text-rose-600 m-6" id="warning">Please Grant Location Access</label>
-                    {/if}
-                    {/if} -->
+                        <input type="checkbox" bind:checked={child.Arrived} id="{child.$id}" name="{child.Name}" value="{child.$id}" class='checkbox checkbox-success rounded-full' on:change={isArrived}>
                 </div>
             </div>
         </div>

@@ -1,69 +1,21 @@
 <script lang='ts'>
-    import type { slug } from "./+page";
     import { appwriteDatabases,appwriteClient } from "$lib/appwrite";
     import { DB_ID,COLLECTION } from "$lib/ids";
     import { onMount } from "svelte";
     import { browser } from "$app/environment";
     import { Query } from "appwrite";
 
-    export let data:slug;
+    // export let data:slug;
 
-    let className = '';
+    let className = 'Master List';
     let classStudents = [] as any[];
 
     let loading = true;
 
-    async function resetAll() {
-        await appwriteDatabases.getDocument(DB_ID,COLLECTION.Class,data.classID).then((res) => {
-            // console.log(res);
-            classStudents = res['students'];
-            classStudents.forEach(async (student) => {
-                await appwriteDatabases.updateDocument(DB_ID,COLLECTION.Students,student.$id,
-                    {
-                        Arrived:false,
-                        Sent:false,
-                        Received:false,
-                    }
-                ).then((res) => {
-                    // console.log(res);
-                }).catch((err) => {
-                    console.log(err);
-                });
-            });
-        }).catch((err) => {
-            console.log(err);
-        });
-
-        // update the parents collection
-        classStudents.forEach(async (student) => {
-            await appwriteDatabases.listDocuments(DB_ID,COLLECTION.Parents,[Query.limit(200)]).then((res) => {
-                // console.log(res);
-
-                // get the parents that match the student parents id and update the Arrived value to false
-                let parents = res['documents'].filter((parent) => parent.$id == student.parents.$id);
-                parents.forEach(async (parent) => {
-                    await appwriteDatabases.updateDocument(DB_ID,COLLECTION.Parents,parent.$id,
-                        {
-                            Arrived:false,
-                        }
-                    ).then((res) => {
-                        console.log(res);
-                    }).catch((err) => {
-                        console.log(err);
-                    });
-                });
-            }).catch((err) => {
-                console.log(err);
-            });
-        });
-    }
-
     async function getClass() {
-        await appwriteDatabases.getDocument(DB_ID,COLLECTION.Class,data.classID).then((res) => {
+        await appwriteDatabases.listDocuments(DB_ID,COLLECTION.Students,[Query.limit(200)]).then((res) => {
             // console.log(res);
-            classStudents = res['students'];
-            className = res['Name'];
-            console.log(classStudents);
+            classStudents = res['documents'];
             loading = false;
         }).catch((err) => {
             console.log(err);
@@ -131,7 +83,7 @@
     }
 </script>
 
-<main class=" overflow-y-scroll h-[80vh] text-white">
+<main class="">
     {#if loading}
         <div class="flex items-center justify-center pt-1">
         <span class="loading loading-spinner loading-lg mt-5"></span>
@@ -145,9 +97,10 @@
         <h1 class="text-3xl font-bold text-center">{className}</h1>
         </div>
         <div class="flex justify-end items-end">
-            <button class="btn btn-success" on:click={resetAll}>Reset</button>
+            <!-- <button class="btn btn-success" on:click={resetAll}>Reset</button> -->
         </div>
     </div>
+    <div class="overflow-y-scroll h-screen pb-20">
     <div class="flex flex-col items-center justify-center">
         <div class="flex flex-col gap-3 w-full">
             <div class="flex flex-row pb-2">
@@ -165,15 +118,16 @@
     </div>
     <div class="flex flex-col gap-1">
         <div class="flex flex-col gap-1">
-            {#each classStudents.filter(student => student.Arrived) as student}
+            {#each (classStudents.filter(student => student.Arrived)) || (classStudents.filter(student => student.parents.Arrived)) as student}
                 <div class="flex flex-row pl-5 pr-5 pt-2" id="studentList">
                     <div class="flex-1 flex flex-row gap-4">
-                        <input type="checkbox" class="checkbox checkbox-success rounded-full disabled:opacity-100 disabled:bg-transparent outline" checked={student.Arrived} disabled>
+                        <input type="checkbox" class="checkbox checkbox-success rounded-full disabled:opacity-100 disabled:bg-transparent outline" checked={student.Arrived || student.parents.Arrived} disabled>
                         <input type="checkbox" class="checkbox checkbox-info rounded-full disabled:opacity-100 disabled:bg-transparent outline ml-8" checked={student.Received} disabled>
                         <div class="flex flex-col gap-1 pl-6">
                             <h2 class="text-xl">{student.Name}</h2>
                             <!-- get the parents[0] Name array inside the students array -->
                             <h3 class="text-sm">Parent: {student.parents.Name}</h3>
+                            <h3 class="text-sm">Class: {student.class.Name}</h3>
                         </div>
                     </div>
                     <div>
@@ -184,15 +138,17 @@
             {/each}
         </div>
         <div class="flex flex-col gap-1">
-            {#each classStudents.filter(student => !student.Arrived) as student}
+            {#each classStudents.filter(student => !student.Arrived) || classStudents.filter(student => !student.parents.Arrived) as student}
                 <div class="flex flex-row pl-5 pr-5 pt-2" id="studentList">
                     <div class="flex-1 flex flex-row gap-4">
-                        <input type="checkbox" class="checkbox checkbox-success rounded-full disabled:opacity-100 disabled:bg-transparent outline" checked={student.Arrived} disabled>
+                        <input type="checkbox" class="checkbox checkbox-success rounded-full disabled:opacity-100 disabled:bg-transparent outline" checked={student.Arrived || student.parents.Arrived} disabled>
                         <input type="checkbox" class="checkbox checkbox-info rounded-full disabled:opacity-100 disabled:bg-transparent outline ml-8" checked={student.Received} disabled>
                         <div class="flex flex-col gap-1 pl-6">
                             <h2 class="text-xl">{student.Name}</h2>
                             <!-- get the parents[0] Name array inside the students array -->
                             <h3 class="text-sm">Parent: {student.parents.Name}</h3>
+                            <h3 class="text-sm">Class: {student.class.Name}</h3>
+
                         </div>
                     </div>
                     <div>
@@ -202,6 +158,7 @@
                 <div class="w-full h-0.5 bg-slate-500 opacity-25"></div> 
             {/each}
         </div>
+    </div>
     </div>
     {/if}
 </main>

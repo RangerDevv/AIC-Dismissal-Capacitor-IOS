@@ -99,96 +99,7 @@
     onMount(async () =>{ 
         listClasses();
         getChildren();
-        // Callback function automatically called when location services initialized in iOS app
-    function median_geolocation_ready() {
-    // Define the locationSuccess function
-    function locationSuccess(position:any) {
-        // Handle the success callback logic here
-        // console.log(position);
-        // Get the user's latitude and longitude coordinates
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
 
-        isLocationAccessGranted = true;
-        // Update the map with the user's new location
-        // console.log(`Latitude: ${lat}, longitude: ${lng}`);
-        
-        // check if the user is within 100 meters of the mosque
-        let R = 6371e3; // Earth's radius in meters
-        let φ1 = lat * Math.PI/180; // Convert latitude from degrees to radians
-        let φ2 = mosqueLat * Math.PI/180; // Convert mosque latitude from degrees to radians
-        let Δφ = (mosqueLat-lat) * Math.PI/180; // Difference of latitudes
-        let Δλ = (mosqueLng-lng) * Math.PI/180; // Difference of longitudes
-
-        let a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-            Math.cos(φ1) * Math.cos(φ2) *
-            Math.sin(Δλ/2) * Math.sin(Δλ/2);
-        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-        let distance = R * c; // Distance in meters
-
-        isNearMosque = distance < 100 ? true : false;
-        locationLoading = false;
-    }
-
-    // Call the getCurrentPosition method with the defined locationSuccess function
-    function locationError(error:any) {
-        console.log(error);
-    }
-
-    const locationOptions = {}; // Declare locationOptions variable
-    navigator.geolocation.getCurrentPosition(locationSuccess, locationError, {enableHighAccuracy: true}); // Call the getCurrentPosition method with the defined locationSuccess function
-    }
-        
-// Use callback function as a helper function and call immediately if not in iOS app
-// console.log(navigator.userAgent);
-if (navigator.userAgent.includes('MedianIOS')) {
-  median_geolocation_ready();
-} else {
-    // Check if geolocation is supported by the browser
-    if ("geolocation" in navigator) {
-    // Prompt user for permission to access their location
-    isLocationAccessGranted = true;
-    navigator.geolocation.watchPosition(
-        // Success callback function
-        function(position) {
-        // Get the user's latitude and longitude coordinates
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
-
-        // Update the map with the user's new location
-        // console.log(`Latitude: ${lat}, longitude: ${lng}`);
-
-        // if the user is within 100 meters of the mosque then send the notification
-        let R = 6371e3; // Earth's radius in meters
-        let φ1 = lat * Math.PI/180; // Convert latitude from degrees to radians
-        let φ2 = mosqueLat * Math.PI/180; // Convert mosque latitude from degrees to radians
-        let Δφ = (mosqueLat-lat) * Math.PI/180; // Difference of latitudes
-        let Δλ = (mosqueLng-lng) * Math.PI/180; // Difference of longitudes
-
-        let a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-            Math.cos(φ1) * Math.cos(φ2) *
-            Math.sin(Δλ/2) * Math.sin(Δλ/2);
-        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-        let distance = R * c; // Distance in meters
-
-        isNearMosque = distance < 100 ? true : false;
-        locationLoading = false;
-        },
-        // Error callback function
-        function(error) {
-        // Handle errors, e.g. user denied location sharing permissions
-        console.error("Error getting user location:", error);
-        isLocationAccessGranted = false;
-        locationLoading = false;
-        }
-    );
-    } else {
-    // Geolocation is not supported by the browser
-    console.error("Geolocation is not supported by this browser.");
-    }
-}
 });
 
     async function isArrived(e:any) {
@@ -337,7 +248,11 @@ if (navigator.userAgent.includes('MedianIOS')) {
         {/each}
     </select>
     <div class="modal-action">
+        {#if newChildName.length > 0 && newChildClass.length > 0}
         <label for="my_modal_6" class="btn btn-success" on:click={addChild}>Add Child</label>
+        {:else}
+        <button disabled class="btn btn-success disabled">Add Child</button>
+        {/if}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <label for="my_modal_6" class="btn btn-error">Close</label>
     </div>

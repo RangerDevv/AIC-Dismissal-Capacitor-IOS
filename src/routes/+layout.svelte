@@ -69,7 +69,9 @@
 <ion-app>
 
     <div class="mainBody">
-   <slot></slot>
+   <div class="mt-20">     
+    <slot></slot>
+    </div>
    <nav class="navbar bg-green-300 fixed bottom-0 ">
     <div class="flex-1">
         <a href="/" class="text-4xl btn">🏠</a>

@@ -27,19 +27,19 @@
                 <div class="label">
                 <span class="label-text text-white">Email</span>
                 </div>
-                <input type="email" placeholder="Type here" class="input input-bordered w-full max-w-xs text-black" bind:value={email} />
+                <input type="email" placeholder="Type here" class="input input-bordered w-full max-w-xs text-white" bind:value={email} />
             </label>
             <label class="form-control w-full max-w-xs">
                 <div class="label">
                 <span class="label-text text-white">Name</span>
                 </div>
-                <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs text-black" bind:value={name} />
+                <input type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs text-white" bind:value={name} />
             </label>
             <label class="form-control w-full max-w-xs">
                 <div class="label">
                 <span class="label-text text-white">Date Of Birth</span>
                 </div>
-                <input type="date" placeholder="Type here" class="input input-bordered w-full max-w-xs text-black" bind:value={date} />
+                <input type="date" placeholder="Type here" class="input input-bordered w-full max-w-xs text-white" bind:value={date} />
             </label>
             <!-- <label for="password">Password</label>
             <input type="password" id="password" bind:value={password} /> -->
@@ -47,13 +47,13 @@
                 <div class="label">
                 <span class="label-text text-white">Password</span>
                 </div>
-                <input type="password" placeholder="Password (Must be 8 characters long)" class="input input-bordered w-full max-w-xs text-black" bind:value={password} />
+                <input type="password" placeholder="Password (Must be 8 characters long)" class="input input-bordered w-full max-w-xs text-white" bind:value={password} />
             </label>
             <label class="form-control w-full max-w-xs">
                 <div class="label">
                 <span class="label-text text-white">Confirm Password</span>
                 </div>
-                <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs text-black" bind:value={confirmPassword} />
+                <input type="password" placeholder="Type here" class="input input-bordered w-full max-w-xs text-white" bind:value={confirmPassword} />
             </label>
             <button class="btn btn-success mt-3 w-full" disabled={disabled} type="submit">Register</button>
             <p class="text-red-500 text-center mt-5">{errorMsg}</p>

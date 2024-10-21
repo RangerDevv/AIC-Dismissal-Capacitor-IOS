@@ -69,7 +69,7 @@
 <ion-app>
 
     <div class="mainBody">
-   <div class="mt-20">     
+   <div class="mt-10">     
     <slot></slot>
     </div>
    <nav class="navbar bg-green-300 fixed bottom-0 ">

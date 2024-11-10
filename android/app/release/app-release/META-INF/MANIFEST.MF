@@ -11,7 +11,7 @@ Name: BUNDLE-METADATA/com.android.tools.build.libraries/dependencies.p
 SHA-256-Digest: cidaIOU0H4smJTc1rLPF13MXmSYb0REutfoT25PoTNU=
 
 Name: BUNDLE-METADATA/com.android.tools.build.profiles/baseline.prof
-SHA-256-Digest: gZ1S7hZv21srlEfN7F12rm4NLbtRpVTo3Ga6LcYoBFg=
+SHA-256-Digest: X9Mr7A1SBq5yh9JGrwmQviAUwSxT/vkcSOYNlE04R1k=
 
 Name: BUNDLE-METADATA/com.android.tools.build.profiles/baseline.profm
 SHA-256-Digest: k+bLJBOmDilCR0PLBso75h8DgiudJaq8RUK5dyvV36k=
@@ -23,7 +23,7 @@ Name: base/assets.pb
 SHA-256-Digest: 8d82gHa1SLFqpbyAP8handC3PzYKTV3l6DrR/PvvCO8=
 
 Name: base/assets/capacitor.config.json
-SHA-256-Digest: Oczzl7sS0bYujqrh7Gldb9hSuG1PQ+tvcGCW8N5ozIw=
+SHA-256-Digest: cUFeZA0uakrUxQHwjylF4MDtHvrHJwYA8+o3p7Wn5L4=
 
 Name: base/assets/capacitor.plugins.json
 SHA-256-Digest: YQp7ZEZlOCaICk89+Pxk+R2AZvflCTOslm0lcUkpY2o=
@@ -125,10 +125,10 @@ Name: base/assets/public/index.html
 SHA-256-Digest: QiO5xOTsZL7UDLsQVrwBtZZ2gUPNP8XgD7r1i58Hb4k=
 
 Name: base/dex/classes.dex
-SHA-256-Digest: MYry9OihQs5/MKWFqfndgvS/rCytrkzQvKuUyediIaY=
+SHA-256-Digest: i2hZprN1pV18wSqyIkrJnjJesXNSlKFdLA5VDiZSFNA=
 
 Name: base/manifest/AndroidManifest.xml
-SHA-256-Digest: u7SIkNfu/4HGfoXnnXAuZqQgwDw4FOzMmgboKZUfdzg=
+SHA-256-Digest: +9lReG3hcOlAQSoLQ/ZVzlyIOKXeYoe7pIwpd+TGPeo=
 
 Name: base/res/anim-v21/fragment_fast_out_extra_slow_in.xml
 SHA-256-Digest: mMWWmImvmwVyS8dM8vkjlQs3c3/cqLaEXfDdJ0ALabw=

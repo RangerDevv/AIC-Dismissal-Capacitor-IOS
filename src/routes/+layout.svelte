@@ -88,7 +88,7 @@
         {/if}
         {#if isLoggedIn}
         {#if teacher}
-        <a href="/dashboard/teacherDash/"><button class="btn">All Classroom</button></a>
+        <a href="/dashboard/teacherDash/"><button class="btn">All Classes</button></a>
         {#if uid == '6697ecbf5b1da3cc985e' || uid == '658c6e971bcb4f11e387'}
         <a href="/allUsers"><button class="btn">Admin</button></a>
         {/if}

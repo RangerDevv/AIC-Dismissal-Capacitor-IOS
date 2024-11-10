@@ -4,7 +4,7 @@ android {
     namespace "co.median.android.mrbaqx"
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "app.aicdismissal.vercel"
+        applicationId "co.median.android.mrbaqx"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
